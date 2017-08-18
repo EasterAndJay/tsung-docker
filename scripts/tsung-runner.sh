@@ -20,11 +20,11 @@ fi
 
 # http://stackoverflow.com/questions/2369341/which-tcp-port-does-erlang-use-for-connecting-to-a-remote-node
 # erl -kernel inet_dist_listen_min 9001 inet_dist_listen_max 9005
-
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 current_date=$(date +%Y%m%d-%H%M)
 echo "Tsung log directory should be ${current_date}"
 cmd='tsung -l /usr/local/tsung/ '$@
 echo "Executin ${cmd} ..."
 ${cmd}
-cd /usr/local/tsung/${current_date}/ && /usr/lib64/tsung/bin/tsung_stats.pl
+cd /usr/local/tsung/${current_date}/ && /usr/lib/tsung/bin/tsung_stats.pl
 
